@@ -111,3 +111,39 @@ in the explorer you can use the following keys
 - d : delete
 
 
+## TMUX 
+
+Leader switch is <C-s> changed in tmux config
+
+Switching around in neivim is <C-h>,<C-j>,<C-k>,<C-l>
+
+creating a new pan
+
+### Windows 
+
+- Window are high lying are 
+
+
+- Create window 
+    <leader-c>
+- close current window 
+    <leader-&>
+- list windows
+    <leader-w>
+- previous window 
+    <leader-p>
+- next window 
+    <leader-n>
+- select window by number 
+    <leader-window_number>
+
+
+
+### Panes 
+
+- lower than a windows there can be multiple withn a  window
+
+- split current pane vertical 
+    <leader-%>
+- split current pane horizontal 
+    <leader-">
