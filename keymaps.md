@@ -111,6 +111,16 @@ in the explorer you can use the following keys
 - d : delete
 
 
+
+## Autocompletion
+- Scroll hint doc -4
+    <C-b>
+- Scroll hint doc +4
+    <C-
+- Show help text
+    <leader-h>
+
+
 ## TMUX 
 
 Leader switch is <C-s> changed in tmux config
