@@ -157,3 +157,6 @@ creating a new pan
     <leader-%>
 - split current pane horizontal 
     <leader-">
+## JQ Json formatter 
+to formatt json use 
+:%!jq .
