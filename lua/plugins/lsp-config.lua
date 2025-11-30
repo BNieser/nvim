@@ -12,6 +12,8 @@ return {
         "ruff",         -- Python Linter/Formatter
         "clangd",       -- C/C++ LSP
         "marksman",     -- Markdown LSP (für Sphinx Docs)
+	"mypy", 	-- Python static analysis
+	"jq",		-- Json Formatter
       },
       automatic_installation = true,
     },
@@ -62,12 +64,44 @@ return {
         }
       })
       vim.lsp.enable('pyright')
-      
+
       -- Ruff (neuer Name, ersetzt ruff_lsp)
       vim.lsp.config('ruff', {
         capabilities = capabilities,
       })
       vim.lsp.enable('ruff')
+
+  -- Sort imports in the current file using ruff
+      vim.api.nvim_create_user_command("SortImports", function()
+        vim.cmd("write")
+        vim.fn.jobstart(
+          { "ruff", "check", "--select", "I", "--fix", vim.fn.expand("%") },
+          {
+            stdout_buffered = true,
+            stderr_buffered = true,
+            on_exit = function()
+              vim.cmd("edit")
+              print("Imports sorted ✔")
+            end,
+          }
+        )
+      end, {})
+
+      -- Format entire project using ruff
+      vim.api.nvim_create_user_command("FormatProject", function()
+        vim.fn.jobstart(
+          { "ruff", "format", "." },
+          {
+            stdout_buffered = true,
+            stderr_buffered = true,
+            on_exit = function()
+              print("Project formatted ✔")
+            end,
+          }
+        )
+      end, {})
+
+
       
       -- C/C++ LSP
       vim.lsp.config('clangd', {
@@ -86,7 +120,7 @@ return {
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover documentation' })
       vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = 'Code actions' })
       vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = 'Rename symbol' })
-      vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = 'Find references' })
+      vim.keymap.set('n', '<leader>fr', vim.lsp.buf.references, { desc = 'Find references' })
       
       -- Diagnostics Navigation
       vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Previous diagnostic' })
