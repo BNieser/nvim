@@ -121,13 +121,45 @@ in the explorer you can use the following keys
     <leader-h>
 
 
-## TMUX 
+### Load config
 
-Leader switch is <C-s> changed in tmux config
+- needed requiremnts tpm to install
 
-Switching around in neivim is <C-h>,<C-j>,<C-k>,<C-l>
+Repo config file: tmux.conf  
+Default tmux config path: ~/.tmux.conf
 
-creating a new pan
+Options:
+
+1. Copy
+```bash
+cp tmux.conf ~/.tmux.conf
+tmux source-file ~/.tmux.conf
+```
+
+2. Symlink (inside this repo directory)
+```bash
+ln -sf "$(pwd)/tmux.conf" ~/.tmux.conf
+tmux source-file ~/.tmux.conf
+```
+
+3. Start tmux with explicit file
+```bash
+tmux -f tmux.conf
+```
+
+Reload in a running session (Prefix r = C-s then r):
+```bash
+tmux source-file ~/.tmux.conf
+```
+
+Verify config file / symlink:
+```bash
+ls -l ~/.tmux.conf
+```
+
+
+
+
 
 ### Windows 
 
