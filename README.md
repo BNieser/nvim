@@ -18,3 +18,8 @@ or defaults to $HOME/.config/ghostty/config
 
 Reloading Config: <ctrl-shift-,>
 
+
+### Clipboard 
+für clipboard sachen muss eins installiert sein 
+
+sudo apt install wl-clipboard
