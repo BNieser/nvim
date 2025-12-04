@@ -12,13 +12,19 @@ return {
         "ruff",         -- Python Linter/Formatter
         "clangd",       -- C/C++ LSP
         "marksman",     -- Markdown LSP (für Sphinx Docs)
-	"mypy", 	-- Python static analysis
-	"jq",		-- Json Formatter
       },
       automatic_installation = true,
     },
     dependencies = { "neovim/nvim-lspconfig" },
   },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    opts = {
+      ensure_installed = {
+        "mypy",         -- Python static type checker
+        "jq",           -- JSON Formatter
+      },
+  }},
   {
     "neovim/nvim-lspconfig",
     dependencies = { "hrsh7th/cmp-nvim-lsp" },
